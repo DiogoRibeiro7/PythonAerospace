@@ -1,4 +1,8 @@
 """
+Dictionary:
+CL - Coefficient of Lift
+AoA - Angle of Attack
+
 Description:
 This code demonstrates a function that calculates the Coefficient of Lift (CL)
 for an aerofoil as a function of its Angle of Attack (AoA), measured in degrees. The purpose
@@ -8,17 +12,24 @@ begins to experience stall. This results in a reduction of the lift coefficient 
 angle of attack exceeds a critical threshold, simulating the aerodynamic behavior of 
 the wing during stall. 
 
+Conclusion:
+The first stall occurs at an angle of attack (AoA) of 15º, where the CL reaches its peak before
+beginning to decline. At approximately 22.5º AoA, the CL starts to rise again, reaching
+another peak at approximately 45º AoA. From this point, it decreases linearly until
+reaching zero. Between 90º and 180º AoA, the airfoil exhibits a behavior that mirrors the
+previously described pattern but in the negative direction.
+
 Sources:
 https://en.wikipedia.org/wiki/Lift_coefficient
 https://www.flight-training-made-simple.com/post/the-lift-formula
 https://aviation.stackexchange.com/questions/64490/is-there-a-simple-relationship-between-angle-of-attack-and-lift-coefficient
 https://www.grc.nasa.gov/www/k-12/VirtualAero/BottleRocket/airplane/liftco.html
+https://aerospaceweb.org/question/airfoils/q0150b.shtml
 
 Libraries required:
  - matplotlib
  - numpy
 """
-#Still W.I.P
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -59,6 +70,7 @@ def Lift_Coefficient(x):
     return cl 
 
 """
+!!NOT APPLICABLE TO THIS FORMULA!!
 #Calculates aspect ratio for the AW109SP Helicopter
 
 rotorRadius = 5.5
@@ -66,7 +78,7 @@ chordLength = 0.2
 aspectRatio = rotorRadius/chordLength """
 
 #X axis between 0 and 180 degrees
-alphaDeg = np.linspace(0,180, 1000)
+alphaDeg = np.linspace(0, 180, 1000)
 
 #Calculates lift coefficent based on
 yValues = Lift_Coefficient(alphaDeg)
@@ -85,6 +97,7 @@ plt.title("Angle of Attack Effect on Lift", fontsize=14)
 
 #Define y limits
 plt.ylim(-1.2,1.2)
+plt.xlim(0,90)
 
 #Create a grid
 plt.grid(True, which='both')
