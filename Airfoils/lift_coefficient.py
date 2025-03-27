@@ -97,7 +97,7 @@ plt.title("Angle of Attack Effect on Lift", fontsize=14)
 
 #Define y limits
 plt.ylim(-1.2,1.2)
-plt.xlim(0,90)
+plt.xlim(0,180)
 
 #Create a grid
 plt.grid(True, which='both')
